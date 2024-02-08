@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        vector<int> res;
+        map<int, int> mp;
+        for(auto i : nums)
+            mp[i]++;
+
+       for(int i = 0; i < k; i++)
+        {
+            int fr = 0;
+            int val = 0;
+            for(auto j : mp)
+         {
+           
+            if(j.second > fr)
+            {
+                fr = j.second;
+                val = j.first;
+            }
+         }
+            mp.erase(val);
+            res.push_back(val);
+        }
+
+        return res;
+
+    }
+};
